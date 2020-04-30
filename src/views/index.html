@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://localhost:3000/css/codemirror.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/mdn-like.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/3024-day.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/style.css">
+    <title>Compiladores 2</title>
+</head>
+
+<body>
+
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-10">
+                <button type="button" class="btn btn-dark">Cargar Archivo</button>
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Nuevo
+                    Archivo</button>
+                <button type="button" class="btn btn-dark">Compilar</button>
+                <button type="button" class="btn btn-dark">Reportes</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col" id="AreaCode">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content" id="tabPanels">
+
+                </div>
+
+
+                <div id="zero" class="row justify-content-center mt-5 pt-5">
+                    <div class="col-8 mt-5 pt-5 ">
+                        <h1>Carge un archivo o cree uno nuevo</h1>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nombre del Archivo</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <input type="text" id="txtTitulo" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="btnCrear">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="http://localhost:3000/js/codemirror.js"></script>
+    <script src="http://localhost:3000/js/jquery-3.5.0.min.js"></script>
+    <script src="http://localhost:3000/js/popper.min.js"></script>
+    <script src="http://localhost:3000/js/bootstrap.min.js"></script>
+    <script src="http://localhost:3000/js/app.js"></script>
+</body>
+
+</html>
