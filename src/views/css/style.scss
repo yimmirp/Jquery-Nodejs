@@ -1,0 +1,35 @@
+[type="file"] {
+    height: 0;
+    overflow: hidden;
+    width: 0;
+}
+
+[type="file"]+label {
+    background: #343a40;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: inherit;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    outline: none;
+    padding: 0.4rem 20px;
+    margin: 1px;
+    position: relative;
+    transition: all 0.3s;
+    vertical-align: middle;
+    &:hover {
+        background-color: darken(#343a40, 10%);
+    }
+    &.btn-1 {
+        background-color: #343a40;
+        box-shadow: 0 6px darken(#f79159, 10%);
+        transition: none;
+        &:hover {
+            box-shadow: 0 4px darken(#f79159, 10%);
+            top: 2px;
+        }
+    }
+}

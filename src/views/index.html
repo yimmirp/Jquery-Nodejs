@@ -6,27 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="http://localhost:3000/css/codemirror.css">
     <link rel="stylesheet" href="http://localhost:3000/css/mdn-like.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/ayu-dark.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/darcula.css">
+    <link rel="stylesheet" href="http://localhost:3000/css/nord.css">
+
     <link rel="stylesheet" href="http://localhost:3000/css/3024-day.css">
     <link rel="stylesheet" href="http://localhost:3000/css/bootstrap.min.css">
     <link rel="stylesheet" href="http://localhost:3000/css/style.css">
     <title>Compiladores 2</title>
 </head>
 
-<body>
+<body class="bg-light">
 
 
     <div class="container mt-3">
         <div class="row">
             <div class="col-10">
-                <button type="button" class="btn btn-dark">Cargar Archivo</button>
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Nuevo
-                    Archivo</button>
-                <button type="button" class="btn btn-dark">Compilar</button>
+                <input type="file" id="file" />
+                <label for="file">Cargar Archivo</label>
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">Nuevo Archivo</button>
+                <button type="button" class="btn btn-dark" id="btnCompilar">Compilar</button>
                 <button type="button" class="btn btn-dark">Reportes</button>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col" id="AreaCode">
+
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
 
@@ -35,25 +40,83 @@
                 <!-- Tab panes -->
                 <div class="tab-content" id="tabPanels">
 
+
+                </div>
+
+                <div class="row justify-content-center " style="height: 380px; align-items: center;" id="zero">
+                    <h1>
+                        No hay ningun archivo abierto
+                    </h1>
                 </div>
 
 
-                <div id="zero" class="row justify-content-center mt-5 pt-5">
-                    <div class="col-8 mt-5 pt-5 ">
-                        <h1>Carge un archivo o cree uno nuevo</h1>
-
-                    </div>
-                </div>
             </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col" id="Results">
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link py-1 text-dark" data-toggle="tab" href="#tabPaneConsola" role="tab" aria-controls="">Consola</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-1 text-dark" data-toggle="tab" href="#tabPaneErrores" role="tab" aria-controls="">Errores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link py-1 text-dark" data-toggle="tab" href="#tabPaneReporte" role="tab" aria-controls="">Reporte</a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+
+                <div class="tab-content" id="tabPanelConsole">
+
+                    <div class="tab-pane fade show active" id="tabPaneConsola" role="tabpanel" aria-labelledby="Consola-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea name="consola" id="consola"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade  active" id="tabPaneErrores" role="tabpanel" aria-labelledby="Errores-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea name="errores" id="errores"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade active" id="tabPaneReporte" role="tabpanel" aria-labelledby="Reporte-tab">
+                        <div class="row">
+                            <div class="col-12">
+                                <textarea name="reporte" id="reporte"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row justify-content-end">
+
+
+            <p id="CompileFile"></p>
+
         </div>
     </div>
 
 
 
 
+
+
+
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -63,8 +126,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" id="txtTitulo" class="form-control" aria-label="Sizing example input"
-                        aria-describedby="inputGroup-sizing-sm">
+                    <input type="text" id="txtTitulo" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
