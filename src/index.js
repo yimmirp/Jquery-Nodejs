@@ -80,6 +80,28 @@ var Heap[];`,
     })
 })
 
+app.post('/arbol', (req, res) => {
+    const { code, title } = req.body;
+    console.log('arbol')
+    res.json('ok');
+})
+
+app.post('/bloques', (req, res) => {
+    const { code, title } = req.body;
+    console.log('bloques')
+
+    res.json('ok');
+
+})
+
+app.post('/optimizacion', (req, res) => {
+    const { code, title } = req.body;
+    console.log('optimizacion')
+
+    res.json('ok');
+
+})
+
 //run
 app.listen(app.get("port"), () => {
     console.log('Server running');

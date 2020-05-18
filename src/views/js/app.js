@@ -233,3 +233,110 @@ $('#optB').on('click', function(e) {
         }
     })
 })
+
+function abrirNuevoTab(url) {
+    var win = window.open(url, '_blank');
+    win.focus();
+}
+
+$('#Arbol').on('click', function(e) {
+
+
+    e.preventDefault()
+    $('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
+    let codeArea = editors.find(editor => editor.id == idCodeArea);
+    let code3DArea = editors.find(editor => editor.id == idCode3D);
+
+    $.ajax({
+        url: '/arbol',
+        method: 'POST',
+        data: {
+            code: codeArea.meditor.getValue(),
+            title: TitleCompiled
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    })
+
+
+
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+})
+
+$('#bloques').on('click', function(e) {
+    e.preventDefault()
+
+    $('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
+    let codeArea = editors.find(editor => editor.id == idCodeArea);
+    let code3DArea = editors.find(editor => editor.id == idCode3D);
+
+    $.ajax({
+        url: '/bloques',
+        method: 'POST',
+        data: {
+            code: codeArea.meditor.getValue(),
+            title: TitleCompiled
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    })
+
+
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+})
+
+$('#rrerrores').on('click', function(e) {
+    e.preventDefault()
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+
+})
+
+$('#heap').on('click', function(e) {
+    e.preventDefault()
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+
+})
+
+$('#stack').on('click', function(e) {
+    e.preventDefault()
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+
+})
+
+$('#roptimiza').on('click', function(e) {
+    e.preventDefault()
+
+    $('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
+    let codeArea = editors.find(editor => editor.id == idCodeArea);
+    let code3DArea = editors.find(editor => editor.id == idCode3D);
+
+    $.ajax({
+        url: '/optimizacion',
+        method: 'POST',
+        data: {
+            code: codeArea.meditor.getValue(),
+            title: TitleCompiled
+        },
+        success: function(res) {
+            console.log(res);
+        }
+    })
+
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+
+})
+
+$('#TablaSimbolos').on('click', function(e) {
+    e.preventDefault()
+    abrirNuevoTab('http://localhost:3000/entrada.txt')
+
+
+})
