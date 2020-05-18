@@ -1,3 +1,13 @@
+function download() {
+
+
+}
+
+//download('http://localhost:3000/entrada.txt');
+
+
+
+
 let countTab = 0;
 let idCodeArea = '';
 let idCode3D = '';
@@ -124,26 +134,17 @@ inputFile.addEventListener('change', function(e) {
 
 //TODO: Compilar
 $('#btnCompilar').on('click', function(e) {
-
     e.preventDefault()
     $('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
     let codeArea = editors.find(editor => editor.id == idCodeArea);
     let code3DArea = editors.find(editor => editor.id == idCode3D);
 
-    // console.log('ID TextArea: ' + idCodeArea);
-    // console.log('Title Text: ' + TitleCompiled);
-    // console.log(editors)
-    console.log(codeArea.meditor.getValue())
-    console.log(code3DArea.meditor.getValue())
-
-
-    // code3DArea.meditor.setValue('ddddd')
-
     $.ajax({
         url: '/compilar',
         method: 'POST',
         data: {
-            code: codeArea.meditor.getValue()
+            code: codeArea.meditor.getValue(),
+            title: TitleCompiled
         },
         success: function(res) {
             console.log(res);
@@ -153,15 +154,7 @@ $('#btnCompilar').on('click', function(e) {
             Reporte.setValue(res.Reportes);
         }
     })
-
-
-
-
 })
-
-
-
-
 
 
 //Foco de la Tab seleccionada
@@ -170,8 +163,73 @@ $('#myTab').on('click', '.nav-link', function(e) {
     let name = $(this).text().split(' ')
     idCodeArea = 'codeArea' + this.id;
     idCode3D = 'c3d' + this.id;
-
     TitleCompiled = name[0];
+})
 
 
+
+function download() {
+    let codeArea = editors.find(editor => editor.id == idCodeArea);
+    console.log(codeArea.meditor.getValue())
+    var element = document.createElement('a');
+    element.style.display = "none";
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(codeArea.meditor.getValue()));
+    element.setAttribute('download', TitleCompiled);
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+}
+
+
+$('#saveButton').on('click', function() {
+    console.log(TitleCompiled);
+    download();
+});
+
+
+$('#optM').on('click', function(e) {
+
+    console.log('optm')
+    e.preventDefault()
+        //$('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
+        //let codeArea = editors.find(editor => editor.id == idCodeArea);
+    let code3DArea = editors.find(editor => editor.id == idCode3D);
+
+    $.ajax({
+        url: '/mirilla',
+        method: 'POST',
+        data: {
+            code: code3DArea.meditor.getValue()
+        },
+        success: function(res) {
+            console.log(res);
+            console.log(res.code3D)
+            code3DArea.meditor.setValue(res.code3D);
+        }
+    })
+
+})
+
+
+
+$('#optB').on('click', function(e) {
+
+    console.log('optB')
+    e.preventDefault()
+        //$('#CompileFile').text('Archivo Compilado: ' + TitleCompiled);
+        //let codeArea = editors.find(editor => editor.id == idCodeArea);
+    let code3DArea = editors.find(editor => editor.id == idCode3D);
+
+    $.ajax({
+        url: '/bloques',
+        method: 'POST',
+        data: {
+            code: code3DArea.meditor.getValue()
+        },
+        success: function(res) {
+            console.log(res);
+            console.log(res.code3D)
+            code3DArea.meditor.setValue(res.code3D);
+        }
+    })
 })
